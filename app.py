@@ -468,7 +468,7 @@ elif pagina == "🗺️ Rutas y Despacho":
             use_container_width=True, hide_index=True,
         )
     else:
-        st.info("Aún no se han calculado rutas.")
+        st.info("Aún no se han calculated rutas.")
 
 # ===========================================================================
 # RASTREO
