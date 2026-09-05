@@ -24,6 +24,12 @@ class EstadoEnvio(str, Enum):
     INCIDENCIA = "INCIDENCIA"
 
 
+class EstadoMantenimiento(str, Enum):
+    PROGRAMADO = "PROGRAMADO"
+    EN_PROCESO = "EN_PROCESO"
+    COMPLETADO = "COMPLETADO"
+
+
 @dataclass
 class Producto:
     codigo: str
@@ -99,3 +105,23 @@ class Envio:
     ruta: Ruta
     estado: EstadoEnvio = EstadoEnvio.PENDIENTE
     historial: List[Tuple[datetime, EstadoEnvio, str]] = field(default_factory=list)
+
+
+@dataclass
+class Conductor:
+    id: str
+    nombre: str
+    licencia: str
+    telefono: str = ""
+    disponible: bool = True
+
+
+@dataclass
+class Mantenimiento:
+    id: str
+    vehiculo: Vehiculo
+    tipo: str  # ej: PREVENTIVO, CORRECTIVO
+    inicio: datetime
+    fin: datetime
+    notas: str = ""
+    estado: EstadoMantenimiento = EstadoMantenimiento.PROGRAMADO
